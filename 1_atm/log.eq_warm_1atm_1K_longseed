@@ -1,0 +1,176 @@
+
+# Create simulation box and atoms
+read_data 	../Setup_Atoms/1atm/data.longseed_1atm_ML
+Reading data file ...
+  orthogonal box = (0.53513279 0.13765975 0.13765975) to (98.697408 25.389326 25.389326)
+  4 by 1 by 1 MPI processor grid
+  reading atoms ...
+  2060 atoms
+  reading velocities ...
+  2060 velocities
+  read_data CPU = 0.040 seconds
+
+
+# Define potential
+
+pair_style 	    sw
+pair_coeff	    * * ML.sw mW
+Reading sw potential file ML.sw with DATE: 2019-02-27
+
+# Run minimization and output files
+
+minimize 	    1.0e-8 1.0e-8 10000 1000
+WARNING: Using 'neigh_modify every 1 delay 0 check yes' setting during minimization (../min.cpp:187)
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.0032907
+  ghost atom cutoff = 6.0032907
+  binsize = 3.0016454, bins = 33 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.219 | 4.221 | 4.226 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0    277.59689   -20256.262            0   -18552.515    173.61757 
+     479    277.59689     -22781.6            0   -21077.852    160.33267 
+Loop time of 0.845174 on 4 procs for 479 steps with 2060 atoms
+
+99.2% CPU use with 4 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+     -20256.2623564544  -22781.5993966585  -22781.5996211526
+  Force two-norm initial, final = 379.32785 0.13341176
+  Force max component initial, final = 21.831790 0.035651918
+  Final line search alpha, max atom move = 1.0000000 0.035651918
+  Iterations, force evaluations = 479 886
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.54049    | 0.67578    | 0.78867    |  11.8 | 79.96
+Neigh   | 0.0092251  | 0.009882   | 0.010423   |   0.5 |  1.17
+Comm    | 0.023912   | 0.12385    | 0.26572    |  25.8 | 14.65
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.03566    |            |       |  4.22
+
+Nlocal:        515.000 ave         524 max         507 min
+Histogram: 2 0 0 0 0 0 0 0 1 1
+Nghost:        1146.50 ave        1174 max        1118 min
+Histogram: 1 1 0 0 0 0 0 0 0 2
+Neighs:        0.00000 ave           0 max           0 min
+Histogram: 4 0 0 0 0 0 0 0 0 0
+FullNghs:      14698.0 ave       15135 max       14365 min
+Histogram: 2 0 0 0 0 0 0 1 0 1
+
+Total # of neighbors = 58792
+Ave neighs/atom = 28.539806
+Neighbor list builds = 10
+Dangerous builds = 0
+
+# Equilibration of molecular water
+
+# Add velocity/set timestep
+
+velocity	    all create ${TEMP} ${SEED} rot yes dist gaussian
+velocity	    all create 289 ${SEED} rot yes dist gaussian
+velocity	    all create 289 25266 rot yes dist gaussian
+timestep	    10.0
+
+# Define output
+
+compute			1 all msd
+thermo	    	50
+thermo_style	custom step temp press vol etotal ke pe c_1[4]
+
+# Neighbor lists
+
+neigh_modify    delay 0 every 1 check yes
+
+# Set fixes
+
+fix             1 all momentum 10 linear 1 1 1 rescale
+fix             2 all nve
+fix             3 all temp/csvr ${TEMP} ${TEMP} 500.0 ${SEED}
+fix             3 all temp/csvr 289 ${TEMP} 500.0 ${SEED}
+fix             3 all temp/csvr 289 289 500.0 ${SEED}
+fix             3 all temp/csvr 289 289 500.0 25266
+fix             4 all press/berendsen iso ${PRES} ${PRES} 1000.0 modulus 20000
+fix             4 all press/berendsen iso 1 ${PRES} 1000.0 modulus 20000
+fix             4 all press/berendsen iso 1 1 1000.0 modulus 20000
+
+# Run very short equilibration
+#
+dump		    1 all atom 50 eq.${NAME}.dump
+dump		    1 all atom 50 eq.warm_1atm_1K_longseed.dump
+run	            500
+Per MPI rank memory allocation (min/avg/max) = 3.470 | 3.475 | 3.478 Mbytes
+Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
+     479          289    211.44461    62592.844   -21007.866     1773.734     -22781.6            0 
+     500    167.85323   -207.61498    62505.615   -20649.949    1030.1972   -21680.146   0.22459373 
+     550    213.01374    191.26791    62683.874   -20004.813    1307.3692   -21312.182   0.60563202 
+     600     243.6061    -14.11432    62910.308   -19594.085    1495.1295   -21089.214    1.1087102 
+     650    258.21638    61.778714    63025.717   -19351.828    1584.7999   -20936.628     1.686348 
+     700    266.90739   -226.00992    63015.541    -19219.08    1638.1409   -20857.221    2.2449497 
+     750    269.97098    294.52859    63078.809   -19100.409    1656.9436   -20757.353    2.8880838 
+     800     275.7882   -454.61132    62899.469    -18960.37    1692.6467   -20653.017    3.5144946 
+     850    278.90945    565.17779    62884.521   -18939.096    1711.8033   -20650.899    4.3959956 
+     900    287.02787    237.81506    62861.252   -18815.102    1761.6301   -20576.732    5.2083299 
+     950    292.72358    282.85263     62966.78   -18744.616    1796.5875   -20541.203    6.0730295 
+     979    300.25491   -278.49124    63027.752   -18714.494    1842.8109   -20557.304    6.6976123 
+Loop time of 0.557758 on 4 procs for 500 steps with 2060 atoms
+
+Performance: 774.529 ns/day, 0.031 hours/ns, 896.446 timesteps/s
+99.2% CPU use with 4 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.33431    | 0.40417    | 0.44716    |   6.8 | 72.46
+Neigh   | 0.051963   | 0.054558   | 0.055576   |   0.6 |  9.78
+Comm    | 0.026289   | 0.066145   | 0.13822    |  16.6 | 11.86
+Output  | 0.0052536  | 0.0052838  | 0.005367   |   0.1 |  0.95
+Modify  | 0.014656   | 0.023733   | 0.036396   |   5.2 |  4.25
+Other   |            | 0.003871   |            |       |  0.69
+
+Nlocal:        515.000 ave         522 max         508 min
+Histogram: 1 1 0 0 0 0 0 0 1 1
+Nghost:        1146.75 ave        1181 max        1120 min
+Histogram: 1 1 0 0 0 0 1 0 0 1
+Neighs:        0.00000 ave           0 max           0 min
+Histogram: 4 0 0 0 0 0 0 0 0 0
+FullNghs:      14728.5 ave       15063 max       14381 min
+Histogram: 1 0 0 1 0 0 0 1 0 1
+
+Total # of neighbors = 58914
+Ave neighs/atom = 28.599029
+Neighbor list builds = 58
+Dangerous builds = 0
+
+write_data		${DIR}/data.eq-${NAME}-${TEMP}
+write_data		./data.eq-${NAME}-${TEMP}
+write_data		./data.eq-warm_1atm_1K_longseed-${TEMP}
+write_data		./data.eq-warm_1atm_1K_longseed-289
+System init for write_data ...
+undump          1
+
+reset_timestep  0
+
+unfix           2
+unfix           3
+unfix           4
+
+
+################################################
+#######         Run Simulation         #########
+################################################
+
+log				${DIR}/log.run_${NAME}
+log				./log.run_${NAME}
+log				./log.run_warm_1atm_1K_longseed

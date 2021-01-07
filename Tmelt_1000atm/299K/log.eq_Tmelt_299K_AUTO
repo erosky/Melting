@@ -1,0 +1,114 @@
+
+# Import phase coexistance setup
+#
+read_data           ../data.ice_water_1000atm
+Reading data file ...
+  orthogonal box = (-0.050188045 -0.031735009 -0.031735009) to (50.556270 31.967845 31.967845)
+  2 by 1 by 2 MPI processor grid
+  reading atoms ...
+  1550 atoms
+  reading velocities ...
+  1550 velocities
+  read_data CPU = 0.003 seconds
+
+# Define potential
+#
+pair_style 	    sw
+pair_coeff	    * * ../ML.sw mW
+Reading sw potential file ../ML.sw with DATE: 2019-02-27
+
+# Reset velocity/set timestep
+#
+velocity	    all create ${TEMP} 120598 rot yes dist gaussian
+velocity	    all create 299 120598 rot yes dist gaussian
+timestep	    10.0
+
+# Define output
+#
+compute	            1 all msd
+compute             2 all orientorder/atom nnn NULL degrees 2 4 12
+thermo              1000
+thermo_style        custom step temp press vol etotal ke pe c_1[4]
+
+# Neighbor lists
+#
+neigh_modify        delay 0 every 1 check yes
+
+# Set fixes
+#
+fix                 1 all momentum 10 linear 1 1 1 rescale
+fix                 2 all nve
+fix                 3 all temp/csvr ${TEMP} ${TEMP} 500.0 928347
+fix                 3 all temp/csvr 299 ${TEMP} 500.0 928347
+fix                 3 all temp/csvr 299 299 500.0 928347
+fix                 4 all press/berendsen iso ${PRES} ${PRES} 1000.0 modulus 20000
+fix                 4 all press/berendsen iso -1000 ${PRES} 1000.0 modulus 20000
+fix                 4 all press/berendsen iso -1000 -1000 1000.0 modulus 20000
+
+# Run very short equilibration
+#
+dump		    1 all atom 50 eq.${NAME}.dump
+dump		    1 all atom 50 eq.Tmelt_299K_AUTO.dump
+run	            500
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.0032907
+  ghost atom cutoff = 6.0032907
+  binsize = 3.0016454, bins = 17 11 11
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+  (2) compute orientorder/atom, occasional, copy from (1)
+      attributes: full, newton on
+      pair build: copy
+      stencil: none
+      bin: none
+Per MPI rank memory allocation (min/avg/max) = 4.494 | 4.494 | 4.494 Mbytes
+Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
+       0          299    -592.0257    51819.654   -13615.844    1380.5652   -14996.409            0 
+     500    296.09034   -1097.5215    49935.777   -14525.851    1367.1304   -15892.982    8.7811933 
+Loop time of 0.368461 on 4 procs for 500 steps with 1550 atoms
+
+Performance: 1172.444 ns/day, 0.020 hours/ns, 1356.995 timesteps/s
+99.5% CPU use with 4 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.14177    | 0.21608    | 0.29434    |  15.4 | 58.64
+Neigh   | 0.048196   | 0.049168   | 0.050786   |   0.5 | 13.34
+Comm    | 0.010544   | 0.090514   | 0.16589    |  24.1 | 24.57
+Output  | 0.003135   | 0.0032959  | 0.0034661  |   0.2 |  0.89
+Modify  | 0.0071239  | 0.0072245  | 0.0072985  |   0.1 |  1.96
+Other   |            | 0.002183   |            |       |  0.59
+
+Nlocal:        387.500 ave         399 max         383 min
+Histogram: 3 0 0 0 0 0 0 0 0 1
+Nghost:        1004.50 ave        1015 max         996 min
+Histogram: 2 0 0 0 0 0 0 1 0 1
+Neighs:        0.00000 ave           0 max           0 min
+Histogram: 4 0 0 0 0 0 0 0 0 0
+FullNghs:      10762.0 ave       10900 max       10508 min
+Histogram: 1 0 0 0 0 0 1 0 0 2
+
+Total # of neighbors = 43048
+Ave neighs/atom = 27.772903
+Neighbor list builds = 69
+Dangerous builds = 0
+
+reset_timestep      0
+undump              1
+unfix               2
+unfix               3
+unfix               4
+
+################################################
+#######         Run Simulation         #########
+################################################
+
+log                 log.run_${NAME}
+log                 log.run_Tmelt_299K_AUTO

@@ -1,0 +1,28 @@
+
+
+## Ice Seed volumetric data:
+#
+# -0.009178157228805883 6.372568157228912 xlo xhi
+# -0.03671262891522353 25.490272628915648 ylo yhi
+# -0.03671262891522353 25.490272628915648 zlo zhi
+
+#
+variable ICE_XLO equal -0.009178157228805883
+variable ICE_XHI equal 6.372568157228912
+variable ICE_LO equal -0.03671262891522353
+variable ICE_HI equal 25.490272628915648
+variable ICE_WIDTH equal v_ICE_HI-v_ICE_LO
+variable ICE_LEN equal v_ICE_XHI-v_ICE_XLO
+
+## Set Simulation Box Size
+#
+variable WIDTH equal v_ICE_WIDTH
+variable LEN equal 100.0
+
+
+################################################
+####### Equilibrate Liquid Water #########
+################################################
+
+log log.${NAME}.eq_water
+log log.longseed_284K_1atm_ML.eq_water

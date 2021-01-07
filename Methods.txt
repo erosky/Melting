@@ -1,0 +1,7 @@
+Here we want to determine the melting temperature of the mW and MLmW water models at -1000 atm and -500 atm
+
+We will start by setting up coexistance of ice and liquid.
+
+Make sure ice_ratio_[temp].awk is set up properly for the temperature range and timestep you're using - calculate ice fraction at each timestep
+Open up running_avg.awk and make sure the temp_0 variable is set correctly - smooth out ice fraction curve
+
