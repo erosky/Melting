@@ -2,7 +2,7 @@
 
 # Verify that system is equilibrated by looking for 
 # stable potential evergy and mean square displacement
-# USAGE: ./analysis_run.sh LOG_FILE DATA_FILE
+# USAGE: ./analysis_run.sh LOG_FILE DATA_FILE TRIAL
 
 
 # Create data file of wanted lines from the log file START to END
@@ -11,6 +11,7 @@ echo $1
 start=17
 end=1017
 datafile=$2
+trial=$3
 temp=270
 run=AUTO
 
@@ -25,7 +26,7 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'kJ/mol'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:7" > run_PE_${run}.svg
+            plot '${datafile}.dat' using 1:7" > run_PE_${run}_${trial}.svg
 
 # Plot and save Total Energy
 gnuplot -e "set terminal svg background rgb 'white'; \
@@ -33,7 +34,7 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'kJ/mol'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:5" > run_E_${run}.svg
+            plot '${datafile}.dat' using 1:5" > run_E_${run}_${trial}.svg
 
 # Plot and save Mean square disp
 gnuplot -e "set terminal svg background rgb 'white'; \
@@ -41,7 +42,7 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'Angstroms'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:8" > run_MSD_${run}.svg
+            plot '${datafile}.dat' using 1:8" > run_MSD_${run}_${trial}.svg
 
 # Plot and save Volume
 gnuplot -e "set terminal svg background rgb 'white'; \
@@ -49,4 +50,4 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'Cubic Angstroms'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:4" > run_VOL_${run}.svg
+            plot '${datafile}.dat' using 1:4" > run_VOL_${run}_${trial}.svg

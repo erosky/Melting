@@ -1,18 +1,19 @@
 LAMMPS (29 Oct 2020)
-# GAME PLAN
-# fill box with randomly distributed atoms
-# pressure should be at -500
-# equilibrate at 289K for 1ns
-# verify equilibrium by lookig at potential energy
-# cut out half the atoms
-# fill in void with ice data
-# remove overlaps
-# hold ice fixed while equilibrating water for 1ns at 289K
-# save configuration
+# setup approximately 25x30x30 angstrom block of ice 1h
+# ML-mW, Chan et.al. 2009, Nat Comm
+# fill box with diamond lattice
+# pressure should be at 1 atm
+# density of 0.0310473103 N/A^3
+# 289 K
+# Real units, atomic atom style (no bonded interactions)
+# time in units of fs
+# equilibrate for 1 ns
+# verify equilibrium by lookig at potential energy, MSD and Pressure
 
 
-variable            NAME string icewater_289K_500atm_ML
-variable            TEMP string 289
+
+variable            NAME string ice_294K_500atm_ML
+variable            TEMP string 294
 variable            PRES string -500
 variable            TCOUPL string 5000.0
 variable            PCOUPL string 10000.0
@@ -22,4 +23,4 @@ variable            PDAMP string 2500.0
 units	   	    real
 atom_style 	    atomic
 log		    log.eq_${NAME}
-log		    log.eq_icewater_289K_500atm_ML
+log		    log.eq_ice_294K_500atm_ML

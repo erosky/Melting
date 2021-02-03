@@ -3,12 +3,12 @@
 #
 read_data           ../data.ice_water_1000atm
 Reading data file ...
-  orthogonal box = (-0.050188045 -0.031735009 -0.031735009) to (50.556270 31.967845 31.967845)
+  orthogonal box = (-0.026044458 -0.016322108 -0.016322108) to (50.985067 31.952433 31.952433)
   2 by 1 by 2 MPI processor grid
   reading atoms ...
-  1550 atoms
+  1568 atoms
   reading velocities ...
-  1550 velocities
+  1568 velocities
   read_data CPU = 0.003 seconds
 
 # Define potential
@@ -69,34 +69,34 @@ Neighbor list info ...
       bin: none
 Per MPI rank memory allocation (min/avg/max) = 4.494 | 4.494 | 4.494 Mbytes
 Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
-       0          299    -592.0257    51819.654   -13615.844    1380.5652   -14996.409            0 
-     500    296.09034   -1097.5215    49935.777   -14525.851    1367.1304   -15892.982    8.7811933 
-Loop time of 0.368461 on 4 procs for 500 steps with 1550 atoms
+       0          299   -1310.4285    52133.421   -13815.501    1396.6079   -15212.109            0 
+     500    291.73471   -1088.8466    49930.221   -14668.361    1362.6722   -16031.033    9.3286529 
+Loop time of 0.374252 on 4 procs for 500 steps with 1568 atoms
 
-Performance: 1172.444 ns/day, 0.020 hours/ns, 1356.995 timesteps/s
-99.5% CPU use with 4 MPI tasks x no OpenMP threads
+Performance: 1154.303 ns/day, 0.021 hours/ns, 1335.999 timesteps/s
+99.1% CPU use with 4 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.14177    | 0.21608    | 0.29434    |  15.4 | 58.64
-Neigh   | 0.048196   | 0.049168   | 0.050786   |   0.5 | 13.34
-Comm    | 0.010544   | 0.090514   | 0.16589    |  24.1 | 24.57
-Output  | 0.003135   | 0.0032959  | 0.0034661  |   0.2 |  0.89
-Modify  | 0.0071239  | 0.0072245  | 0.0072985  |   0.1 |  1.96
-Other   |            | 0.002183   |            |       |  0.59
+Pair    | 0.14576    | 0.21937    | 0.29297    |  15.7 | 58.62
+Neigh   | 0.04754    | 0.048518   | 0.049163   |   0.3 | 12.96
+Comm    | 0.018862   | 0.09321    | 0.16761    |  24.3 | 24.91
+Output  | 0.0030777  | 0.0032337  | 0.0034025  |   0.2 |  0.86
+Modify  | 0.0074172  | 0.0076029  | 0.0077741  |   0.2 |  2.03
+Other   |            | 0.002316   |            |       |  0.62
 
-Nlocal:        387.500 ave         399 max         383 min
-Histogram: 3 0 0 0 0 0 0 0 0 1
-Nghost:        1004.50 ave        1015 max         996 min
-Histogram: 2 0 0 0 0 0 0 1 0 1
+Nlocal:        392.000 ave         407 max         384 min
+Histogram: 1 1 1 0 0 0 0 0 0 1
+Nghost:        999.750 ave        1008 max         992 min
+Histogram: 2 0 0 0 0 0 0 0 0 2
 Neighs:        0.00000 ave           0 max           0 min
 Histogram: 4 0 0 0 0 0 0 0 0 0
-FullNghs:      10762.0 ave       10900 max       10508 min
-Histogram: 1 0 0 0 0 0 1 0 0 2
+FullNghs:      11024.5 ave       11369 max       10731 min
+Histogram: 1 0 1 0 0 1 0 0 0 1
 
-Total # of neighbors = 43048
-Ave neighs/atom = 27.772903
+Total # of neighbors = 44098
+Ave neighs/atom = 28.123724
 Neighbor list builds = 69
 Dangerous builds = 0
 

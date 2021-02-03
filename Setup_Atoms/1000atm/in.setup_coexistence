@@ -1,16 +1,20 @@
 # GAME PLAN
-# fill box with randomly distributed atoms
-# pressure should be at -500
-# equilibrate at 289K for 1ns
+# Determine box size from the equilibrated ice cube of data.ice_294K_1000atm_ML
+# Density of water under these conditions are compluted in Setup_Atoms/1000atm/water_density
+# fill box with randomly distributed atoms at the specified density
+# For -1000 atm, density is 0.0317 N/A^3
+# pressure should be at 1
+# equilibrate at 284K for 1ns
 # verify equilibrium by lookig at potential energy
 # cut out half the atoms
+# compress uption must be 'no' if you are cutting out more atoms than you load in
 # fill in void with ice data
 # remove overlaps
-# hold ice fixed while equilibrating water for 1ns at 289K
+# hold ice fixed while equilibrating water for 1ns at 280K
 # save configuration
 
 
-variable            NAME string icewater_294K_1000atm_ML
+variable            NAME string icewater_294K_1000atm_ML_DC
 variable            TEMP string 294
 variable            PRES string -1000
 variable            TCOUPL string 5000.0
@@ -57,7 +61,7 @@ create_box 1 all
 
 # fill box with randomly distributed atoms
 #
-create_atoms 1 random 1565 63782 all
+create_atoms 1 random 1652 63782 all
 mass 1 18.015
 group water region all
 
@@ -111,7 +115,7 @@ log log.${NAME}.eq_all
 # Delete water molecules from region where ice will be placed
 #
 region ice block 0 ${ICE_LEN} 0 ${ICE_WIDTH} 0 ${ICE_WIDTH}
-delete_atoms region ice compress yes
+delete_atoms region ice compress no
 
 # Load Ice from data file
 #

@@ -11,8 +11,8 @@
 
 
 
-variable            NAME string ice_289K_500atm_ML
-variable            TEMP string 289
+variable            NAME string ice_294K_500atm_ML
+variable            TEMP string 294
 variable            PRES string -500
 variable            TCOUPL string 5000.0
 variable            PCOUPL string 10000.0

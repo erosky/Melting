@@ -2,7 +2,7 @@
 
 # Verify that system is equilibrated by looking for 
 # stable potential evergy and mean square displacement
-# USAGE: ./analysis_run.sh LOG_FILE DATA_FILE
+# USAGE: ./analysis_run.sh LOG_FILE DATA_FILE TRIAL
 
 
 # Create data file of wanted lines from the log file START to END

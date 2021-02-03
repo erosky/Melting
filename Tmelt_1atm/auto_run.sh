@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#TEMPERATURES=('286K' '287K' '288K' '289K' '290K' '291K' '292K' '293K')
-TEMPERATURES=('290K' '291K' '292K')
+TEMPERATURES=('286K' '287K' '288K' '289K' '290K' '291K' '292K' '293K')
 WORKING_DIR=~/Freezing_Simulations/Melting/Tmelt_1atm
 LOG_FILE=${WORKING_DIR}/auto_run.log
 DATETIME=$(date +"%Y-%m-%d_%H:%M:%S")
