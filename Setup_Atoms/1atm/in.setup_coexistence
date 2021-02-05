@@ -14,7 +14,7 @@
 # save configuration
 
 
-variable            NAME string icewater_284K_1atm_ML_DC
+variable            NAME string icewater_284K_1atm_ML_LG
 variable            TEMP string 284
 variable            PRES string 1
 variable            TCOUPL string 5000.0
