@@ -5,6 +5,7 @@ TEMPERATURES=('286K' '287K' '288K' '289K' '290K' '291K' '292K' '293K')
 WORKING_DIR=~/Freezing_Simulations/Melting/Tmelt_1atm/Analysis_Scripts
 LOG_FILE=${WORKING_DIR}/auto_plot.log
 DATETIME=$(date +"%Y-%m-%d_%H:%M:%S")
+TRIAL='LG'
 
 # Log date and time
 echo "${DATETIME}" >> ${LOG_FILE}
@@ -22,7 +23,7 @@ done
 
 # Plot and save Pot Energy
 gnuplot -e "set terminal png; \
-            set output 'Tmelt_PE_all.png';
+            set output 'Tmelt_PE_${TRIAL}.png';
             set title 'Potential Energy'; \
             set ylabel 'kJ/mol'; \
             set xlabel 'Time (ns)'; \
@@ -39,7 +40,7 @@ gnuplot -e "set terminal png; \
             set key outside ; \
             set key right top ; \
             set style data lines; \
-            plot for [i=286:293] 'run_Tmelt_'.i.'K_AUTO.dat' using 1:5 title ''.i.'K'" > ${WORKING_DIR}/Tmelt_TE_all.png
+            plot for [i=286:293] 'run_Tmelt_'.i.'K_AUTO.dat' using 1:5 title ''.i.'K'" > ${WORKING_DIR}/Tmelt_TE_${TRIAL}.png
 
 # Plot and save Mean square disp
 gnuplot -e "set terminal png; \
@@ -49,7 +50,7 @@ gnuplot -e "set terminal png; \
             set key outside ; \
             set key right top ; \
             set style data lines; \
-            plot for [i=286:293] 'run_Tmelt_'.i.'K_AUTO.dat' using 1:8 title ''.i.'K'" > ${WORKING_DIR}/Tmelt_MSD_all.png
+            plot for [i=286:293] 'run_Tmelt_'.i.'K_AUTO.dat' using 1:8 title ''.i.'K'" > ${WORKING_DIR}/Tmelt_MSD_${TRIAL}.png
 
 # Plot and save Volume
 gnuplot -e "set terminal png; \
@@ -59,7 +60,7 @@ gnuplot -e "set terminal png; \
             set key outside ; \
             set key right top ; \
             set style data lines; \
-            plot for [i=286:293] 'run_Tmelt_'.i.'K_AUTO.dat' using 1:4 title ''.i.'K'" > ${WORKING_DIR}/Tmelt_VOL_all.png
+            plot for [i=286:293] 'run_Tmelt_'.i.'K_AUTO.dat' using 1:4 title ''.i.'K'" > ${WORKING_DIR}/Tmelt_VOL_${TRIAL}.png
 
 
 for temp in "${TEMPERATURES[@]}"; do

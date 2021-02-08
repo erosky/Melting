@@ -16,7 +16,7 @@ for temp in "${TEMPERATURES[@]}"; do
     if [ -f in.melt_test_AUTO ]; then
         echo "$temp input file found: Ready to run $temp simulation" >> ${LOG_FILE}
         # Run simulation, direct errors into log file
-        mpirun -np 4 ../lmp_mpi -in in.melt_test_AUTO 2> ${LOG_FILE}
+        mpirun -n 6 ../../lmp_mpi -in in.melt_test2_AUTO 2> ${LOG_FILE}
         wait
         # Print run time into log file
         tail -1 log.run_Tmelt_${temp}_AUTO >> ${LOG_FILE}

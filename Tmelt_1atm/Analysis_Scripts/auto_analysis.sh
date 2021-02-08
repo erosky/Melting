@@ -15,7 +15,7 @@ for temp in "${TEMPERATURES[@]}"; do
     if [ -f log.run_Tmelt_${temp}_AUTO ]; then
         echo "$temp input file found: Ready to analyze $temp simulation" >> ${LOG_FILE}
         # Run script, direct errors into log file
-        ${WORKING_DIR}/auto_analysis_run.sh log.run_Tmelt_${temp}_AUTO run_Tmelt_${temp}_AUTO 1
+        ${WORKING_DIR}/auto_analysis_run.sh log.run_Tmelt_${temp}_AUTO run_Tmelt_${temp}_AUTO LG
         
     else
         echo "Input file does not exist for $temp simulation" >> ${LOG_FILE}
