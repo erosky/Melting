@@ -1,0 +1,19 @@
+
+
+## Ice Seed volumetric data:
+#
+# -0.024949447635329136 57.2954594476322 xlo xhi
+# -0.024949447635329136 57.2954594476322 ylo yhi
+# -0.024949447635329136 57.2954594476322 zlo zhi
+#
+variable ICE_LO equal -0.024949447635329136
+variable ICE_HI equal 57.2954594476322
+variable ICE_WIDTH equal v_ICE_HI-v_ICE_LO
+
+
+################################################
+####### Equilibrate Liquid Water #########
+################################################
+
+log log.${NAME}.eq_icewater
+log log.icewater_289K_1atm_LG.eq_icewater
