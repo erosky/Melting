@@ -66,7 +66,6 @@ fix                 1 all momentum 10 linear 1 1 1 rescale
 fix                 2 all nve
 fix                 3 all temp/csvr ${TEMP} ${TEMP} 500.0 928347
 fix                 4 all press/berendsen iso ${PRES} ${PRES} 1000.0 modulus 20000
-fix                 5 all deform 1 y final 0.0 8.0 z final 0.0 8.0 units lattice
 
 # Run 0.5 ns equilibration
 #
