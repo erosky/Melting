@@ -9,7 +9,7 @@ LOG="${MODEL}_densities.log"
 
 
 ICE_INPUT='in.setup_ice'
-N_ice=4608   # Number of ice molecules
+N_ice=4608.0   # Number of ice molecules
 
 mkdir ${DIR}
 cp in.setup_ice_template ${DIR}/${ICE_INPUT}
