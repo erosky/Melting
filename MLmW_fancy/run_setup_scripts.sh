@@ -30,7 +30,7 @@ ICE_LOG="log.run_ice_${TEMP}K_${PRES}atm_${MODEL}"
 ice_volume=`awk '{ if (NR > 42 && NR < 1042) sum += $4; n++ } END { if (n > 0) print sum / n; }' ${ICE_LOG}`
 ice_density=`expr ${N_ice} / ${ice_volume}`
 
-echo "Ice density ${TEMP}K ${PRES}atm ${MODEL} : ${ice_density}" >> ../${LOG}
+echo "Ice density ${TEMP}K ${PRES}atm ${MODEL} : ${ice_volume}" >> ../${LOG}
 
 # get y and z dims from line 7 and x 
 # edit liquid inputs
