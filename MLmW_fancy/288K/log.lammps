@@ -1,38 +1,22 @@
 LAMMPS (29 Oct 2020)
-# ML-mW, Chan et.al. 2009, Nat Comm
-# fill box with randomly distributed atoms
-# pressure should be at 1 atm
-# density of 0.0334059691 N/A^3
-# equilibrate at 289K for 1ns
-# verify equilibrium by lookig at potential energy, MSD and Pressure
-# measure density, self-diffusion, and order params
-
+# read in ice data
+# read in water data and shift on the x-axis by xhi
+# remove overlaps
+# hold ice fixed while equilibrating water for 1ns at 280K
+# save configuration
 
 
 variable            TEMP string 288
 variable            PRES string 1
-variable            NAME string liq_${TEMP}K_${PRES}atm_ML
-variable            NAME string liq_288K_${PRES}atm_ML
-variable            NAME string liq_288K_1atm_ML
+variable            NAME string coexist_${TEMP}K_${PRES}atm_ML
+variable            NAME string coexist_288K_${PRES}atm_ML
+variable            NAME string coexist_288K_1atm_ML
 variable            TCOUPL string 5000.0
 variable            PCOUPL string 10000.0
 variable            TDAMP string 1000.0
 variable            PDAMP string 2500.0
 
-variable            YZ_LO string -0.018350680642512884.0
-variable            YZ_HI string 50.92547068064044.0
-variable            X string 53.4
-
-
-## Real units, atomic atom style (no bonded interactions)
-#
-units               real
-atom_style          atomic
-
-
-################################################
-#######    Equilibrate Liquid Water    #########
-################################################
-
-log                 log.eq_${NAME}
-log                 log.eq_liq_288K_1atm_ML
+units	   	    real
+atom_style 	    atomic
+log		    log.eq_${NAME}
+log		    log.eq_coexist_288K_1atm_ML
