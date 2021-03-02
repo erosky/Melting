@@ -12,7 +12,7 @@
 # measure density, self-diffusion, and order params
 
 
-variable            TEMP string 289
+variable            TEMP string 290
 variable            PRES string 1
 variable            NAME string ice_${TEMP}K_${PRES}atm_ML
 variable            TCOUPL string 5000.0
