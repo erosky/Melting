@@ -101,4 +101,4 @@ thermo_style        custom step temp press vol etotal ke pe c_1[4]
 # Run 1ns simulation
 dump		    1 all custom 400 prod.${NAME}.dump id type x y z vx vy vz c_2[*]
 run                 200000
-
+write_data		data.${NAME}
