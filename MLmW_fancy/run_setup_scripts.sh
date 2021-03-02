@@ -23,12 +23,12 @@ sed -i -E "15 s/[0-9]+/${TEMP}/" ${ICE_INPUT}
 sed -i -E "16 s/[0-9]+/${PRES}/" ${ICE_INPUT}
 
 # Run ice setup
-mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
+#mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
 
 # log density of the ice, lines 42 - 1042, volume is field 4
 ICE_LOG="log.run_ice_${TEMP}K_${PRES}atm_${MODEL}"
 ice_volume=`awk '{ if (NR > 42 && NR < 1042) sum += $4; n++ } END { if (n > 0) print sum / n; }' ${ICE_LOG}`
-ice_density=expr ${N_ice} / ${ice_volume}
+ice_density=`expr ${N_ice} / ${ice_volume}`
 
 echo "Ice density ${TEMP}K ${PRES}atm ${MODEL} : ${ice_density}" >> ../${LOG}
 
