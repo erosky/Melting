@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-TEMP=290
+TEMP=288
 PRES=1
 MODEL='ML'
 DIR="${TEMP}K"
