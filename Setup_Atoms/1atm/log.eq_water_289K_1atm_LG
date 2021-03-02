@@ -1,0 +1,14 @@
+
+
+## Set Simulation Box Size
+#
+variable WIDTH equal 57
+variable LEN equal 57
+
+
+################################################
+####### Equilibrate Liquid Water #########
+################################################
+
+log log.${NAME}.eq_water
+log log.water_289K_1atm_LG.eq_water
