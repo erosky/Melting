@@ -25,12 +25,6 @@ sed -i -E "16 s/[0-9]+/${PRES}/" ${ICE_INPUT}
 # Run ice setup
 # mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
 
-# log density of the ice, lines 42 - 1042, volume is field 4
-ICE_LOG="log.run_ice_${TEMP}K_${PRES}atm_${MODEL}"
-ice_volume=`awk '{ if (NR > 42 && NR < 1042) sum += $4; n++ } END { if (n > 0) print sum / n; }' ${ICE_LOG}`
-ice_density=$(expr ${N_ice} / ${ice_volume} )
-
-echo "Ice density ${TEMP}K ${PRES}atm ${MODEL} : ${ice_volume}" >> ../${LOG}
 
 # get y and z dims from line 7 and x 
 # edit liquid inputs
@@ -40,8 +34,10 @@ ICE_FILE="data.ice_${TEMP}K_${PRES}atm_${MODEL}"
 
 yz_lo=`awk 'FNR == 7 {print $1}' ${ICE_FILE}`
 yz_hi=`awk 'FNR == 7 {print $2}' ${ICE_FILE}`
+x_hi=`awk 'FNR == 7 {print $2}' ${ICE_FILE}`
 echo $yz_lo
 echo $yz_hi
+echo $x_hi
 
 LIQ_INPUT='in.setup_liquid'
 N_liq=4608   # Number of ice molecules
@@ -61,13 +57,23 @@ sed -i -E "20 s/[0-9]+/${yz_hi}/" ${LIQ_INPUT}
 
 
 # Run ice setup
-mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
+# mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
 
-# log density of the ice, lines 42 - 1042, volume is field 4
-LIQ_LOG="log.run_liq_${TEMP}K_${PRES}atm_${MODEL}"
-#liq_volume=`awk '{ if (NR > 42 && NR < 1042) sum += $4; n++ } END { if (n > 0) print sum / n; }' ${ICE_LOG}`
-#liq_density=$(expr ${N_ice} / ${ice_volume} )
 
-#echo "Ice density ${TEMP}K ${PRES}atm ${MODEL} : ${ice_volume}" >> ../${LOG}
+## Setting up liquid ice coexistence file
+CO_INPUT="in.coexistence"
+cp ../in.coexistence_template ${CO_INPUT}
 
+# Add volume variables to coexistence setup
+# set temperatures
+sed -i -E "8 s/[0-9]+/${TEMP}/" ${CO_INPUT}
+# set pressure
+sed -i -E "9 s/[0-9]+/${PRES}/" ${CO_INPUT}
+# set x
+sed -i -E "20 s/[0-9]+/${yz_lo}/" ${CO_INPUT}
+# set yz
+sed -i -E "21 s/[0-9]+/${x_hi}/" ${CO_INPUT}
+
+
+mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${CO_INPUT}
 
