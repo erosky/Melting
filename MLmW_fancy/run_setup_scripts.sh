@@ -38,7 +38,7 @@ sed -i -E "15 s/[0-9]+/${TEMP}/" ${ICE_INPUT}
 sed -i -E "16 s/[0-9]+/${PRES}/" ${ICE_INPUT}
 
 # Run ice setup
-#mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
+mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
 
 
 # get y and z dims from line 7 and x 
@@ -72,7 +72,7 @@ sed -i -E "20 s/[0-9]+/${yz_hi}/" ${LIQ_INPUT}
 
 
 # Run liquid setup
-#mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
+mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
 
 
 ## Setting up liquid ice coexistence file
@@ -90,7 +90,7 @@ sed -i -E "20 s/[0-9]+/${yz_lo}/" ${CO_INPUT}
 sed -i -E "21 s/[0-9]+/${x_hi}/" ${CO_INPUT}
 
 # run setup
-#mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${CO_INPUT}
+mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${CO_INPUT}
 
 CO_DATA="data.coexist_${TEMP}K_${PRES}atm_${MODEL}"
 
