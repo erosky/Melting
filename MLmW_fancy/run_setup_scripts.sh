@@ -16,7 +16,7 @@ fi
 
 
 W_DIR=$1 #directory where trials are being stored
-T_DIR="~/Freezing_Simulations/Melting/MLmW_fancy" # directory with templates
+T_DIR="/data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy" # directory with templates
 TEMP=$2
 PRES=$3
 MODEL=$4
@@ -57,7 +57,7 @@ echo $x_hi
 LIQ_INPUT='in.setup_liquid'
 N_liq=4608   # Number of ice molecules
 
-cp ../in.setup_liquid_template ${LIQ_INPUT}
+cp ${T_DIR}/in.setup_liquid_template ${LIQ_INPUT}
 
 # put temperature and pressure aand volume variable into liquid script - lines 11 and 12, column 4
 
@@ -71,7 +71,7 @@ sed -i -E "19 s/[0-9]+/${yz_lo}/" ${LIQ_INPUT}
 sed -i -E "20 s/[0-9]+/${yz_hi}/" ${LIQ_INPUT}
 
 
-# Run ice setup
+# Run liquid setup
 mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
 
 
@@ -97,7 +97,7 @@ CO_DATA="data.coexist_${TEMP}K_${PRES}atm_${MODEL}"
 
 # Run final simulation
 MELT_INPUT="in.melt_test"
-cp ${T_DIR}/in.melt_template ${MELT_INPUT}
+cp ${T_DIR}/in.melt_test_template ${MELT_INPUT}
 
 # Add volume variables to coexistence setup
 # set temperatures
@@ -105,6 +105,7 @@ sed -i -E "8 s/[0-9]+/${TEMP}/" ${MELT_INPUT}
 # set pressure
 sed -i -E "9 s/[0-9]+/${PRES}/" ${MELT_INPUT}
 
+# run melt test
 mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${MELT_INPUT}
 
 
