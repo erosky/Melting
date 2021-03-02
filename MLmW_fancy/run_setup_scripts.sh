@@ -5,7 +5,7 @@ TEMP=290
 PRES=1
 MODEL='ML'
 DIR="${TEMP}K"
-LOG="${TEMP}K_${PRES}atm_${MODEL}.log"
+LOG="${MODEL}_densities.log"
 
 
 ICE_INPUT='in.setup_ice'
@@ -27,7 +27,8 @@ mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
 
 # log density of the ice, lines 42 - 1042, volume is field 4
 ICE_LOG="log.run_ice_${TEMP}K_${PRES}atm_${MODEL}"
-ice_density=`awk '{ if (NR > 42 && NR < 1042) sum += $4; n++ } END { if (n > 0) print sum / n; }' ${ICE_LOG}`
+ice_volume=`awk '{ if (NR > 42 && NR < 1042) sum += $4; n++ } END { if (n > 0) print sum / n; }' ${ICE_LOG}`
+ice_density=expr ${N_ice} / ${ice_volume}
 
 echo "Ice density ${TEMP}K ${PRES}atm ${MODEL} : ${ice_density}" >> ../${LOG}
 
