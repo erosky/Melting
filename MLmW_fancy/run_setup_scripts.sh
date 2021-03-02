@@ -5,7 +5,7 @@
 
 
 # Check for correct number of input arguments
-if [ $# -ne 7 ]
+if [ $# -ne 5 ]
 then
   echo
   echo "  Usage: $0 dir temp pressure model"
