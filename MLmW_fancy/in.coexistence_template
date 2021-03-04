@@ -36,7 +36,7 @@ write_data data.icewater_test
 # Define potential
 #
 pair_style sw
-pair_coeff * * ../ML_mW.sw mW
+pair_coeff * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
 
 # Delete water and ice atoms that are overlapping
 #
