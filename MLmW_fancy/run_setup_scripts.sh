@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Set up new folder for running simulations
+# Set up liquid-ice coexistance (ice and liquid blocks touching) 
+# At the temperature and pressure of interest
 # Input working_dir, temp, pressure, model
 
 

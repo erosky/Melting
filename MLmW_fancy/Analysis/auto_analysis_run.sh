@@ -2,18 +2,17 @@
 
 # Verify that system is equilibrated by looking for 
 # stable potential evergy and mean square displacement
-# USAGE: ./analysis_run.sh LOG_FILE DATA_FILE TRIAL
+# USAGE: ./analysis_run.sh LOG_FILE DATA_FILE TEMP PRES
 
 
 # Create data file of wanted lines from the log file START to END
 echo $1
 
-start=17
-end=1017
+start=18
+end=1518
 datafile=$2
-trial=$3
-temp=270
-run=AUTO
+temp=$3
+pres=$4
 
 
 # Convert timestep to ns, convert energies from kcal/mol to kJ/mol
@@ -26,7 +25,7 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'kJ/mol'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:7" > run_PE_${run}_${trial}.svg
+            plot '${datafile}.dat' using 1:7" > run_PE.svg
 
 # Plot and save Total Energy
 gnuplot -e "set terminal svg background rgb 'white'; \
@@ -34,7 +33,7 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'kJ/mol'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:5" > run_E_${run}_${trial}.svg
+            plot '${datafile}.dat' using 1:5" > run_E.svg
 
 # Plot and save Mean square disp
 gnuplot -e "set terminal svg background rgb 'white'; \
@@ -42,7 +41,7 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'Angstroms'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:8" > run_MSD_${run}_${trial}.svg
+            plot '${datafile}.dat' using 1:8" > run_MSD.svg
 
 # Plot and save Volume
 gnuplot -e "set terminal svg background rgb 'white'; \
@@ -50,4 +49,4 @@ gnuplot -e "set terminal svg background rgb 'white'; \
             set ylabel 'Cubic Angstroms'; \
             set xlabel 'Time (ns)'; \
             set style data lines; \
-            plot '${datafile}.dat' using 1:4" > run_VOL_${run}_${trial}.svg
+            plot '${datafile}.dat' using 1:4" > run_VOL.svg
