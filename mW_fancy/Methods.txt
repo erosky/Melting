@@ -1,0 +1,17 @@
+https://docs.google.com/spreadsheets/d/1SD5mBZOl-UH0CeSPLiRsaTj06ZVQl_LyDdLFwuNwjT8/edit?usp=sharing
+
+at each pressure, equilibrate ice and liquid separately at expected melting temperature. 
+Only allow volume to adjust in x-direction, so that the two blocks can be easily "glued" together
+Use ~4096 water and ~4096 liquid, for a total of ~8192 atoms ?
+Run for 15 ns
+
+
+Run 3 lammps scripts at each temperature:
+1 - equilibrate ice
+2 - equilibrate water
+3 - glue together
+4 - run for 15 ns
+
+for the volume x,y dimensions, set to:
+8*lattice constant
+8*6.36339 = 50.9071 A
