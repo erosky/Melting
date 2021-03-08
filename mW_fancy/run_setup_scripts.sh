@@ -37,8 +37,8 @@ sed -i -E "15 s/[0-9]+/${TEMP}/" ${ICE_INPUT}
 # set pressure
 sed -i -E "16 s/[0-9]+/${PRES}/" ${ICE_INPUT}
 
-# Run ice setup
-mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
+## Run ice setup
+#mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${ICE_INPUT}
 
 
 # get y and z dims from line 7 and x 
@@ -71,8 +71,8 @@ sed -i -E "19 s/[0-9]+/${yz_lo}/" ${LIQ_INPUT}
 sed -i -E "20 s/[0-9]+/${yz_hi}/" ${LIQ_INPUT}
 
 
-# Run liquid setup
-mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
+## Run liquid setup
+#mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${LIQ_INPUT}
 
 
 ## Setting up liquid ice coexistence file
@@ -81,13 +81,13 @@ cp ${T_DIR}/in.coexistence_template ${CO_INPUT}
 
 # Add volume variables to coexistence setup
 # set temperatures
-sed -i -E "8 s/[0-9]+/${TEMP}/" ${CO_INPUT}
+sed -i -E "9 s/[0-9]+/${TEMP}/" ${CO_INPUT}
 # set pressure
-sed -i -E "9 s/[0-9]+/${PRES}/" ${CO_INPUT}
+sed -i -E "10 s/[0-9]+/${PRES}/" ${CO_INPUT}
 # set x
-sed -i -E "20 s/[0-9]+/${yz_lo}/" ${CO_INPUT}
+sed -i -E "21 s/[0-9]+/${yz_lo}/" ${CO_INPUT}
 # set yz
-sed -i -E "21 s/[0-9]+/${x_hi}/" ${CO_INPUT}
+sed -i -E "22 s/[0-9]+/${x_hi}/" ${CO_INPUT}
 
 # run setup
 mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${CO_INPUT}
@@ -101,9 +101,9 @@ cp ${T_DIR}/in.melt_test_template ${MELT_INPUT}
 
 # Add volume variables to coexistence setup
 # set temperatures
-sed -i -E "9 s/[0-9]+/${TEMP}/" ${MELT_INPUT}
+sed -i -E "10 s/[0-9]+/${TEMP}/" ${MELT_INPUT}
 # set pressure
-sed -i -E "10 s/[0-9]+/${PRES}/" ${MELT_INPUT}
+sed -i -E "11 s/[0-9]+/${PRES}/" ${MELT_INPUT}
 
 # run melt test
 mpirun -n 6 ~/LAMMPS_Source/lammps/src/lmp_mpi -in ${MELT_INPUT}
