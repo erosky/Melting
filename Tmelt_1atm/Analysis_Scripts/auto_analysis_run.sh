@@ -8,11 +8,11 @@
 # Create data file of wanted lines from the log file START to END
 echo $1
 
-start=17
-end=1017
+start=9
+end=1009
 datafile=$2
 trial=$3
-temp=270
+temp="286-293"
 run=AUTO
 
 

@@ -152,7 +152,7 @@
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(327.6,31.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="middle">
-		<text><tspan font-family="Arial" >Mean Square Displacement - Sim 270K</tspan></text>
+		<text><tspan font-family="Arial" >Mean Square Displacement - Sim 286-293K</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -164,7 +164,8 @@
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(148,   0, 211)'  d='M516.2,72.1 L558.4,72.1 M84.7,381.6 L85.1,378.2 L85.6,375.1 L86.1,371.4 L86.6,367.8 L87.1,364.8
+	<path stroke='rgb(148,   0, 211)'  d='M516.2,72.1 L558.4,72.1 M80.7,414.5 L81.2,410.0 L81.7,404.0 L82.2,398.2 L82.7,394.4 L83.2,390.3
+		L83.7,386.9 L84.2,384.1 L84.7,381.6 L85.1,378.2 L85.6,375.1 L86.1,371.4 L86.6,367.8 L87.1,364.8
 		L87.6,360.1 L88.1,356.1 L88.6,351.4 L89.1,347.1 L89.6,344.6 L90.1,340.7 L90.6,336.7 L91.1,332.7
 		L91.6,327.8 L92.1,324.3 L92.6,319.3 L93.1,315.4 L93.6,310.4 L94.1,307.7 L94.5,305.7 L95.0,300.9
 		L95.5,297.1 L96.0,294.0 L96.5,290.8 L97.0,286.8 L97.5,284.1 L98.0,279.9 L98.5,277.5 L99.0,274.3
@@ -288,7 +289,7 @@
 		L562.6,58.9 L563.1,59.4 L563.6,58.2 L564.1,59.3 L564.6,59.0 L565.1,59.3 L565.6,59.3 L566.1,59.0
 		L566.6,59.4 L567.1,58.8 L567.6,59.2 L568.1,59.4 L568.6,59.3 L569.1,58.7 L569.6,60.2 L570.1,58.9
 		L570.5,59.5 L571.0,59.3 L571.5,58.8 L572.0,59.6 L572.5,58.9 L573.0,58.6 L573.5,60.1 L574.0,58.6
-		L574.5,59.7 L575.0,58.6  '/></g>
+		L574.5,59.7  '/></g>
 	</g>
 <g fill="none" color="#FFFFFF" stroke="rgb(148,   0, 211)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
