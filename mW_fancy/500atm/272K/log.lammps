@@ -8,11 +8,11 @@ LAMMPS (29 Oct 2020)
 # run for 15 ns
 
 
-variable            TEMP string -500
-variable            PRES string 0
+variable            TEMP string 272
+variable            PRES string -500
 variable            NAME string melt_${TEMP}K_${PRES}atm_mW
-variable            NAME string melt_-500K_${PRES}atm_mW
-variable            NAME string melt_-500K_0atm_mW
+variable            NAME string melt_272K_${PRES}atm_mW
+variable            NAME string melt_272K_-500atm_mW
 variable            TDAMP string 1000.0
 variable            PDAMP string 2500.0
 variable            TCOUPL string 5000.0
@@ -23,4 +23,4 @@ variable            PCOUPL string 10000.0
 units               real
 atom_style          atomic
 log                 log.eq_${NAME}
-log                 log.eq_melt_-500K_0atm_mW
+log                 log.eq_melt_272K_-500atm_mW

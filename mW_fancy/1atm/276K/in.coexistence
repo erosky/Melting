@@ -6,7 +6,7 @@
 # save configuration
 
 
-variable            TEMP string 1
+variable            TEMP string 276
 variable            PRES string 1
 variable            NAME string coexist_${TEMP}K_${PRES}atm_mW
 variable            TCOUPL string 5000.0
@@ -18,8 +18,8 @@ units	   	    real
 atom_style 	    atomic
 log		    log.eq_${NAME}
 
-variable YZ_LO equal -50.48377408746791.024949447635329136
-variable X_HI equal 57.2954594476322
+variable YZ_LO equal -0.42334591252962994.024949447635329136
+variable X_HI equal 50.48377408746791.2954594476322
 
 
 ################################################
@@ -29,8 +29,8 @@ variable X_HI equal 57.2954594476322
 log log.eq_${NAME}
 
 
-read_data data.ice_${TEMP}K_${PRES}atm_ML group ice
-read_data data.liq_${TEMP}K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
+read_data data.ice_${TEMP}K_${PRES}atm_mW group ice
+read_data data.liq_${TEMP}K_${PRES}atm_mW add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 
 write_data data.icewater_test
 

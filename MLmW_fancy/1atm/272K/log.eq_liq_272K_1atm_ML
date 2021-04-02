@@ -1,0 +1,14 @@
+
+# Create simulation box of size 50 x 50 x 50 Angstrom
+#
+lattice	            sc 1
+Lattice spacing in x,y,z = 1.0000000 1.0000000 1.0000000
+region 	            all block 0 ${X} ${YZ_LO} ${YZ_HI} ${YZ_LO} ${YZ_HI} units box
+region 	            all block 0 53.4 ${YZ_LO} ${YZ_HI} ${YZ_LO} ${YZ_HI} units box
+region 	            all block 0 53.4 .0 ${YZ_HI} ${YZ_LO} ${YZ_HI} units box
+region 	            all block 0 53.4 .0 .0 ${YZ_LO} ${YZ_HI} units box
+region 	            all block 0 53.4 .0 .0 .0 ${YZ_HI} units box
+region 	            all block 0 53.4 .0 .0 .0 .0 units box
+create_box          1 all
+Created orthogonal box = (0.0000000 0.0000000 0.0000000) to (53.400000 0.0000000 0.0000000)
+ERROR on proc 0: Box bounds are invalid or missing (../domain.cpp:204)

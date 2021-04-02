@@ -7,8 +7,8 @@
 # run for 15 ns
 
 
-variable            TEMP string -1000
-variable            PRES string 0
+variable            TEMP string 273
+variable            PRES string -1000
 variable            NAME string melt_${TEMP}K_${PRES}atm_mW
 variable            TDAMP string 1000.0
 variable            PDAMP string 2500.0
@@ -23,7 +23,7 @@ log                 log.eq_${NAME}
 
 # Import phase coexistance setup
 #
-read_data           data.coexist_${TEMP}K_${PRES}atm_ML
+read_data           data.coexist_${TEMP}K_${PRES}atm_mW
 
 # Define potential
 #

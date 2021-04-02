@@ -1,0 +1,91 @@
+
+# Define the lattice
+#
+variable	    lattice_constant equal 6.36339
+lattice		    diamond ${lattice_constant}
+lattice		    diamond 6.36339
+Lattice spacing in x,y,z = 6.3633900 6.3633900 6.3633900
+
+# Define region
+# multiples of lattice spacing
+#
+region 		    simbox block 0 9 0 8 0 8
+
+# Create Atoms
+#
+create_box          1 simbox
+Created orthogonal box = (0.0000000 0.0000000 0.0000000) to (57.270510 50.907120 50.907120)
+  3 by 1 by 2 MPI processor grid
+create_atoms        1 box
+Created 4608 atoms
+  create_atoms CPU = 0.000 seconds
+mass                1 18.015
+
+# Define potential
+#
+pair_style          sw
+pair_coeff          * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
+
+# Add velocity/set timestep
+#
+velocity            all create ${TEMP} 120598 rot yes dist gaussian
+velocity            all create 272 120598 rot yes dist gaussian
+timestep            5.0
+
+# Define output
+#
+compute	            1 all msd
+thermo              100
+thermo_style        custom step temp press vol etotal ke pe c_1[4]
+
+# Neighbor lists
+#
+neigh_modify        delay 0 every 1 check yes
+
+# Set fixes
+#
+fix                 1 all momentum 10 linear 1 1 1 rescale
+fix                 2 all nve
+fix                 3 all temp/csvr ${TEMP} ${TEMP} 500.0 928347
+fix                 3 all temp/csvr 272 ${TEMP} 500.0 928347
+fix                 3 all temp/csvr 272 272 500.0 928347
+fix                 4 all press/berendsen iso ${PRES} ${PRES} 1000.0 modulus 20000
+fix                 4 all press/berendsen iso 1 ${PRES} 1000.0 modulus 20000
+fix                 4 all press/berendsen iso 1 1 1000.0 modulus 20000
+
+# Run 0.5 ns equilibration
+#
+dump		    1 all custom 1000 eq.${NAME}.dump id type x y z vx vy vz
+dump		    1 all custom 1000 eq.ice_272K_1atm_ML.dump id type x y z vx vy vz
+run                 100000
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.0032907
+  ghost atom cutoff = 6.0032907
+  binsize = 3.0016454, bins = 20 17 17
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.779 | 4.779 | 4.779 Mbytes
+Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
+       0          272   -711.84652    148418.52   -52161.919     3735.265   -55897.184            0 
+     100    178.42471    110.89215    147642.42   -50654.547    2450.2337   -53104.781  0.089245204 
+     200    208.66352    103.41199    147899.26   -49757.727     2865.491   -52623.218   0.10136423 
+     300     231.7704    57.999906    148085.74   -49191.046    3182.8083   -52373.854   0.11647208 
+     400    247.60739    46.555643     148215.5   -48815.897    3400.2912   -52216.188    0.1199427 
+     500    261.53864    42.728202    148309.84    -48557.06    3591.6034   -52148.664   0.12114418 
+     600     268.5762   -15.928654    148383.93   -48306.559    3688.2473   -51994.806   0.13046067 
+     700    264.69455   -29.784813    148432.82    -48262.94    3634.9423   -51897.883    0.1263997 
+     800    266.25033   -68.054531    148437.98   -48173.366    3656.3071   -51829.673   0.13665392 
+     900    264.67403    0.1306438    148449.38   -48156.505    3634.6605   -51791.165   0.13668216 
+    1000    270.20778   0.45602107    148429.27   -48201.462    3710.6531   -51912.115   0.12695581 
+    1100     267.0163    21.460284    148450.23   -48145.063    3666.8258   -51811.889   0.12668525 
+    1200    273.93654    65.511729    148458.45   -48142.956    3761.8588   -51904.814    0.1281816 
+    1300    272.67253    30.113809    148441.96   -48062.463    3744.5006   -51806.964   0.12981699 
+    1400    265.52732   -13.258826    148459.29   -48159.028    3646.3783   -51805.407   0.13838006 
+    1500    277.89392    17.880175    148429.86   -48187.432    3816.2037   -52003.635   0.12141

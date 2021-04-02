@@ -23,7 +23,7 @@ log                 log.eq_${NAME}
 
 # Import phase coexistance setup
 #
-read_data           data.coexist_${TEMP}K_${PRES}atm_ML
+read_data           data.coexist_${TEMP}K_${PRES}atm_mW
 
 # Define potential
 #
