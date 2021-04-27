@@ -1,0 +1,25 @@
+LAMMPS (29 Oct 2020)
+# import atom configuration
+# set velocities
+# equilibrate for 1 ns
+# run NPT with 10fs time steps
+# Nose-Hoover thermostat and barostat with relaxation time 1 and 2.5 ps
+# run for 15 ns
+
+
+variable            TEMP string 293
+variable            PRES string -1000
+variable            NAME string melt_${TEMP}K_${PRES}atm_ML
+variable            NAME string melt_293K_${PRES}atm_ML
+variable            NAME string melt_293K_-1000atm_ML
+variable            TDAMP string 1000.0
+variable            PDAMP string 2500.0
+variable            TCOUPL string 5000.0
+variable            PCOUPL string 10000.0
+
+# Real units, atomic atom style (no bonded interactions)
+#
+units               real
+atom_style          atomic
+log                 log.eq_${NAME}
+log                 log.eq_melt_293K_-1000atm_ML

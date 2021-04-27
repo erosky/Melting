@@ -1,0 +1,117 @@
+
+# Import phase coexistance setup
+#
+read_data           data.coexist_${TEMP}K_${PRES}atm_ML
+read_data           data.coexist_292K_${PRES}atm_ML
+read_data           data.coexist_292K_1atm_ML
+Reading data file ...
+  orthogonal box = (-0.30593554 -0.16475462 -0.16475462) to (104.53834 51.071875 51.071875)
+  3 by 1 by 2 MPI processor grid
+  reading atoms ...
+  8538 atoms
+  reading velocities ...
+  8538 velocities
+  read_data CPU = 0.023 seconds
+
+# Define potential
+#
+pair_style 	    sw
+pair_coeff	    * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
+
+# Reset velocity/set timestep
+#
+velocity	    all create ${TEMP} 120598 rot yes dist gaussian
+velocity	    all create 292 120598 rot yes dist gaussian
+timestep	    10.0
+
+# Define output
+#
+compute	            1 all msd
+compute             2 all orientorder/atom nnn NULL degrees 2 4 12
+thermo              1000
+thermo_style        custom step temp press vol etotal ke pe c_1[4]
+
+# Neighbor lists
+#
+neigh_modify        delay 0 every 1 check yes
+
+# Set fixes
+#
+fix                 1 all momentum 10 linear 1 1 1 rescale
+fix                 2 all nph iso ${PRES} ${PRES} ${PCOUPL}
+fix                 2 all nph iso 1 ${PRES} ${PCOUPL}
+fix                 2 all nph iso 1 1 ${PCOUPL}
+fix                 2 all nph iso 1 1 10000.0
+fix                 3 all temp/csvr ${TEMP} ${TEMP} ${TCOUPL} 837492
+fix                 3 all temp/csvr 292 ${TEMP} ${TCOUPL} 837492
+fix                 3 all temp/csvr 292 292 ${TCOUPL} 837492
+fix                 3 all temp/csvr 292 292 5000.0 837492
+
+# Run very short equilibration
+#
+dump		    1 all atom 50 eq.${NAME}.dump
+dump		    1 all atom 50 eq.melt_292K_1atm_ML.dump
+run	            500
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.0032907
+  ghost atom cutoff = 6.0032907
+  binsize = 3.0016454, bins = 35 18 18
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair sw, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+  (2) compute orientorder/atom, occasional, copy from (1)
+      attributes: full, newton on
+      pair build: copy
+      stencil: none
+      bin: none
+Per MPI rank memory allocation (min/avg/max) = 4.600 | 4.601 | 4.602 Mbytes
+Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
+       0          292    157.07927    275236.36   -76926.259    7430.5752   -84356.834            0 
+     500    336.44583    171.85199    268719.99   -78432.271    8561.5961   -86993.867    16.560636 
+Loop time of 1.20384 on 6 procs for 500 steps with 8538 atoms
+
+Performance: 358.851 ns/day, 0.067 hours/ns, 415.337 timesteps/s
+99.9% CPU use with 6 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.39218    | 0.66483    | 0.96567    |  28.3 | 55.23
+Neigh   | 0.12504    | 0.14688    | 0.16129    |   3.8 | 12.20
+Comm    | 0.039797   | 0.35408    | 0.64866    |  41.1 | 29.41
+Output  | 0.0078925  | 0.0084811  | 0.0090427  |   0.4 |  0.70
+Modify  | 0.023923   | 0.024406   | 0.024992   |   0.3 |  2.03
+Other   |            | 0.005163   |            |       |  0.43
+
+Nlocal:        1423.00 ave        1458 max        1384 min
+Histogram: 1 1 0 0 0 2 0 0 0 2
+Nghost:        2063.50 ave        2087 max        2027 min
+Histogram: 1 0 0 0 0 0 3 0 1 1
+Neighs:        0.00000 ave           0 max           0 min
+Histogram: 6 0 0 0 0 0 0 0 0 0
+FullNghs:      40271.7 ave       41522 max       39461 min
+Histogram: 2 1 0 0 1 0 0 1 0 1
+
+Total # of neighbors = 241630
+Ave neighs/atom = 28.300539
+Neighbor list builds = 84
+Dangerous builds = 0
+
+reset_timestep      0
+undump              1
+unfix               2
+unfix               3
+
+
+################################################
+#######         Run Simulation         #########
+################################################
+
+log                 log.run_${NAME}
+log                 log.run_melt_292K_1atm_ML
