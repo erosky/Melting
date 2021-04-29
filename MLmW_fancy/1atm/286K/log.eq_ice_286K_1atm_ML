@@ -18,7 +18,7 @@ Created orthogonal box = (0.0000000 0.0000000 0.0000000) to (57.270510 50.907120
   3 by 1 by 2 MPI processor grid
 create_atoms        1 box
 Created 4608 atoms
-  create_atoms CPU = 0.000 seconds
+  create_atoms CPU = 0.002 seconds
 mass                1 18.015
 
 # Define potential
@@ -1074,20 +1074,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
    99800    284.89953    -27.59177    148478.73    -47757.36     3912.409   -51669.769   0.14727469 
    99900    286.16037    33.864808    148484.95   -47811.861    3929.7236   -51741.584   0.14213178 
   100000    285.68586    30.413263     148510.8   -47729.696    3923.2073   -51652.903   0.14204972 
-Loop time of 59.7174 on 6 procs for 100000 steps with 4608 atoms
+Loop time of 51.7053 on 6 procs for 100000 steps with 4608 atoms
 
-Performance: 723.407 ns/day, 0.033 hours/ns, 1674.554 timesteps/s
-98.1% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 835.505 ns/day, 0.029 hours/ns, 1934.038 timesteps/s
+97.8% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 39.693     | 40.093     | 40.579     |   5.5 | 67.14
-Neigh   | 6.2241     | 6.3055     | 6.4216     |   3.1 | 10.56
-Comm    | 9.8212     | 10.279     | 10.711     |   9.4 | 17.21
-Output  | 0.18189    | 0.18304    | 0.18789    |   0.5 |  0.31
-Modify  | 2.076      | 2.1183     | 2.1389     |   1.6 |  3.55
-Other   |            | 0.7389     |            |       |  1.24
+Pair    | 38.375     | 38.473     | 38.565     |   1.1 | 74.41
+Neigh   | 6.1145     | 6.1851     | 6.3276     |   3.8 | 11.96
+Comm    | 4.2821     | 4.4267     | 4.5084     |   3.5 |  8.56
+Output  | 0.16699    | 0.1678     | 0.17112    |   0.4 |  0.32
+Modify  | 1.8062     | 1.8572     | 1.8968     |   2.3 |  3.59
+Other   |            | 0.595      |            |       |  1.15
 
 Nlocal:        768.000 ave         778 max         757 min
 Histogram: 1 0 0 1 0 1 2 0 0 1

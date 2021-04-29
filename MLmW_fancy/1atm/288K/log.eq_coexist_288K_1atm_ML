@@ -10,7 +10,7 @@ Reading data file ...
   4608 atoms
   reading velocities ...
   4608 velocities
-  read_data CPU = 0.014 seconds
+  read_data CPU = 0.032 seconds
 read_data data.liq_${TEMP}K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 read_data data.liq_288K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 read_data data.liq_288K_1atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
@@ -24,7 +24,7 @@ Reading data file ...
   4608 atoms
   reading velocities ...
   4608 velocities
-  read_data CPU = 0.011 seconds
+  read_data CPU = 0.029 seconds
 
 write_data data.icewater_test
 System init for write_data ...
@@ -33,8 +33,8 @@ WARNING: Communication cutoff is 0.0. No ghost atoms will be generated. Atoms ma
 # Define potential
 #
 pair_style sw
-pair_coeff * * ../ML_mW.sw mW
-Reading sw potential file ../ML_mW.sw with DATE: 2019-02-27
+pair_coeff * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
 
 # Delete water and ice atoms that are overlapping
 #
@@ -2111,20 +2111,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
    99900    283.11342   -142.48112    274799.05   -77246.615    7206.1247    -84452.74    4791.9159 
    99950    287.67265    324.16396    274092.16   -77229.256    7322.1713   -84551.427    4785.8938 
   100000    287.46942    285.18859    274224.59   -77237.309    7316.9985   -84554.308     4786.956 
-Loop time of 264.931 on 6 procs for 100000 steps with 8540 atoms
+Loop time of 252.568 on 6 procs for 100000 steps with 8540 atoms
 
-Performance: 326.123 ns/day, 0.074 hours/ns, 377.457 timesteps/s
+Performance: 342.086 ns/day, 0.070 hours/ns, 395.932 timesteps/s
 99.5% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 75.566     | 134.8      | 205.12     | 458.4 | 50.88
-Neigh   | 31.204     | 36.534     | 40.351     |  63.4 | 13.79
-Comm    | 12.283     | 86.431     | 150.89     | 610.1 | 32.62
-Output  | 0.15958    | 0.16276    | 0.17598    |   1.5 |  0.06
-Modify  | 5.5842     | 5.634      | 5.7043     |   1.6 |  2.13
-Other   |            | 1.374      |            |       |  0.52
+Pair    | 72.262     | 130.09     | 200.28     | 456.5 | 51.51
+Neigh   | 30.54      | 35.974     | 40.102     |  64.8 | 14.24
+Comm    | 6.024      | 80.334     | 143.62     | 620.7 | 31.81
+Output  | 0.13694    | 0.13951    | 0.14814    |   1.0 |  0.06
+Modify  | 4.9836     | 5.0483     | 5.1054     |   1.6 |  2.00
+Other   |            | 0.9785     |            |       |  0.39
 
 Nlocal:        1423.33 ave        1450 max        1383 min
 Histogram: 2 0 0 0 0 0 0 1 1 2
@@ -2146,4 +2146,4 @@ write_data data.${NAME}
 write_data data.coexist_288K_1atm_ML
 System init for write_data ...
 
-Total wall time: 0:04:24
+Total wall time: 0:04:12

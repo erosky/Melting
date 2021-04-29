@@ -27,7 +27,7 @@ read_data           data.coexist_${TEMP}K_${PRES}atm_ML
 # Define potential
 #
 pair_style 	    sw
-pair_coeff	    * * ../ML_mW.sw mW
+pair_coeff	    * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
 
 # Reset velocity/set timestep
 #

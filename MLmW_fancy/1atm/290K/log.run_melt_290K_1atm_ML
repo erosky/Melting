@@ -1516,20 +1516,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
  1498000    290.43196   -35.976275    271055.22   -84934.741    7393.2702   -92328.011    6113.4098 
  1499000    287.76206    141.97075    270892.69   -85165.799     7325.305   -92491.104    6116.2065 
  1500000    287.66454   -319.85221     271906.3   -84920.733    7322.8224   -92243.556    6138.6653 
-Loop time of 3123.77 on 6 procs for 1500000 steps with 8541 atoms
+Loop time of 3098.99 on 6 procs for 1500000 steps with 8541 atoms
 
-Performance: 414.883 ns/day, 0.058 hours/ns, 480.188 timesteps/s
-99.3% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 418.201 ns/day, 0.057 hours/ns, 484.029 timesteps/s
+99.4% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 1070.8     | 1603.9     | 2516.2     |1611.5 | 51.35
-Neigh   | 302.01     | 345.43     | 401.01     | 220.6 | 11.06
-Comm    | 112.06     | 1079.7     | 1654.9     |2086.4 | 34.56
-Output  | 13.528     | 13.531     | 13.541     |   0.1 |  0.43
-Modify  | 63.91      | 64.939     | 65.664     |   6.8 |  2.08
-Other   |            | 16.27      |            |       |  0.52
+Pair    | 1060.1     | 1594.7     | 2500.6     |1606.9 | 51.46
+Neigh   | 299.75     | 344.16     | 400.94     | 225.2 | 11.11
+Comm    | 107.61     | 1068.5     | 1647.1     |2087.9 | 34.48
+Output  | 13.276     | 13.277     | 13.285     |   0.1 |  0.43
+Modify  | 62.353     | 63.265     | 63.82      |   6.6 |  2.04
+Other   |            | 15.1       |            |       |  0.49
 
 Nlocal:        1423.50 ave        1468 max        1393 min
 Histogram: 2 1 1 0 0 0 0 0 0 2
@@ -1544,4 +1544,4 @@ Total # of neighbors = 243848
 Ave neighs/atom = 28.550287
 Neighbor list builds = 205566
 Dangerous builds = 0
-Total wall time: 0:52:05
+Total wall time: 0:51:40

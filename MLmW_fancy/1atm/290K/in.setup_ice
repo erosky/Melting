@@ -43,7 +43,7 @@ mass                1 18.015
 # Define potential
 #
 pair_style          sw
-pair_coeff          * * ../ML_mW.sw mW
+pair_coeff          * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
 
 # Add velocity/set timestep
 #

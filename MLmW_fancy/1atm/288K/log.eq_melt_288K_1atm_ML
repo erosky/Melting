@@ -11,13 +11,13 @@ Reading data file ...
   8540 atoms
   reading velocities ...
   8540 velocities
-  read_data CPU = 0.024 seconds
+  read_data CPU = 0.023 seconds
 
 # Define potential
 #
 pair_style 	    sw
-pair_coeff	    * * ../ML_mW.sw mW
-Reading sw potential file ../ML_mW.sw with DATE: 2019-02-27
+pair_coeff	    * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
 
 # Reset velocity/set timestep
 #
@@ -74,20 +74,20 @@ Per MPI rank memory allocation (min/avg/max) = 4.599 | 4.599 | 4.600 Mbytes
 Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
        0          288    287.43982    274224.59   -77223.804    7330.5035   -84554.308            0 
      500    330.52019    182.70487    269545.05   -78721.819    8412.7757   -87134.594    14.918837 
-Loop time of 1.26615 on 6 procs for 500 steps with 8540 atoms
+Loop time of 1.19784 on 6 procs for 500 steps with 8540 atoms
 
-Performance: 341.191 ns/day, 0.070 hours/ns, 394.896 timesteps/s
-99.5% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 360.649 ns/day, 0.067 hours/ns, 417.417 timesteps/s
+99.0% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.38627    | 0.68364    | 1.0148     |  31.0 | 53.99
-Neigh   | 0.12296    | 0.1495     | 0.16771    |   4.9 | 11.81
-Comm    | 0.044639   | 0.39406    | 0.71795    |  43.6 | 31.12
-Output  | 0.0085593  | 0.0091294  | 0.0096816  |   0.4 |  0.72
-Modify  | 0.023466   | 0.02459    | 0.025718   |   0.4 |  1.94
-Other   |            | 0.005236   |            |       |  0.41
+Pair    | 0.38347    | 0.65611    | 0.97016    |  29.1 | 54.77
+Neigh   | 0.12336    | 0.14689    | 0.16266    |   4.4 | 12.26
+Comm    | 0.02907    | 0.35885    | 0.65494    |  41.9 | 29.96
+Output  | 0.0076947  | 0.0082313  | 0.008753   |   0.4 |  0.69
+Modify  | 0.022693   | 0.023259   | 0.023883   |   0.3 |  1.94
+Other   |            | 0.004505   |            |       |  0.38
 
 Nlocal:        1423.33 ave        1452 max        1372 min
 Histogram: 1 0 1 0 0 0 1 0 0 3

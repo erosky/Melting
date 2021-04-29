@@ -1038,20 +1038,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4] Density
   199600    294.36059   -79.757854     138453.9   -41038.089    4042.3338   -45080.422    3853.5274   0.99561309 
   199800    300.66002    -71.49518    138351.31   -41020.059    4128.8414   -45148.901     3854.007   0.99635134 
   200000    291.08065    251.80253    138430.85   -41035.947    3997.2917   -45033.239    3857.3166   0.99577885 
-Loop time of 248.03 on 6 procs for 200000 steps with 4608 atoms
+Loop time of 247.762 on 6 procs for 200000 steps with 4608 atoms
 
-Performance: 348.345 ns/day, 0.069 hours/ns, 806.353 timesteps/s
+Performance: 348.722 ns/day, 0.069 hours/ns, 807.228 timesteps/s
 99.1% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 203.71     | 205.68     | 210.61     |  16.5 | 82.93
-Neigh   | 14.308     | 14.467     | 14.816     |   4.4 |  5.83
-Comm    | 11.294     | 16.036     | 17.964     |  57.3 |  6.47
-Output  | 3.6723     | 3.6733     | 3.6771     |   0.1 |  1.48
-Modify  | 6.7022     | 6.8459     | 6.9832     |   3.3 |  2.76
-Other   |            | 1.325      |            |       |  0.53
+Pair    | 203.8      | 205.63     | 208.08     |   9.8 | 83.00
+Neigh   | 14.315     | 14.522     | 14.808     |   5.3 |  5.86
+Comm    | 13.427     | 15.704     | 17.198     |  31.9 |  6.34
+Output  | 3.6696     | 3.6706     | 3.6745     |   0.1 |  1.48
+Modify  | 6.6778     | 6.8505     | 7.0345     |   4.2 |  2.76
+Other   |            | 1.382      |            |       |  0.56
 
 Nlocal:        768.000 ave         785 max         755 min
 Histogram: 1 1 0 0 1 2 0 0 0 1

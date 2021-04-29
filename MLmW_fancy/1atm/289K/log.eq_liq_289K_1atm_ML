@@ -46,7 +46,7 @@ Per MPI rank memory allocation (min/avg/max) = 4.234 | 4.248 | 4.253 Mbytes
 Step Temp E_pair E_mol TotEng Press 
        0            0    7255185.1            0    7255185.1    4978844.5 
      654            0   -49877.877            0   -49877.877   -378.71504 
-Loop time of 1.24008 on 6 procs for 654 steps with 4608 atoms
+Loop time of 1.34266 on 6 procs for 654 steps with 4608 atoms
 
 99.8% CPU use with 6 MPI tasks x no OpenMP threads
 
@@ -62,12 +62,12 @@ Minimization stats:
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.99874    | 1.0663     | 1.1438     |   5.2 | 85.99
-Neigh   | 0.027244   | 0.028105   | 0.028813   |   0.3 |  2.27
-Comm    | 0.046899   | 0.12479    | 0.19233    |  15.3 | 10.06
+Pair    | 0.99312    | 1.0871     | 1.2424     |   8.1 | 80.96
+Neigh   | 0.027178   | 0.02809    | 0.028918   |   0.3 |  2.09
+Comm    | 0.051623   | 0.2066     | 0.30031    |  18.7 | 15.39
 Output  | 0          | 0          | 0          |   0.0 |  0.00
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.02086    |            |       |  1.68
+Other   |            | 0.0209     |            |       |  1.56
 
 Nlocal:        768.000 ave         784 max         756 min
 Histogram: 1 1 1 0 0 1 1 0 0 1
@@ -1119,20 +1119,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4] Density
   100500    284.80707    79.865532    138053.04   -41266.785    3911.1393   -45177.925     1136.523   0.99850405 
   100600    285.08433    191.59694    137913.67   -41260.013    3914.9468    -45174.96    1136.8699   0.99951304 
   100654    288.51069   -85.002574    137955.29   -41217.302    3961.9995   -45179.301    1138.0663   0.99921152 
-Loop time of 121.021 on 6 procs for 100000 steps with 4608 atoms
+Loop time of 130.594 on 6 procs for 100000 steps with 4608 atoms
 
-Performance: 356.962 ns/day, 0.067 hours/ns, 826.301 timesteps/s
-98.9% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 330.797 ns/day, 0.073 hours/ns, 765.735 timesteps/s
+99.0% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 101.74     | 103.03     | 105.75     |  12.8 | 85.14
-Neigh   | 7.0756     | 7.1299     | 7.2123     |   1.6 |  5.89
-Comm    | 5.4338     | 8.1204     | 9.4633     |  45.5 |  6.71
-Output  | 0.17151    | 0.17227    | 0.17534    |   0.3 |  0.14
-Modify  | 1.8524     | 1.9166     | 1.9787     |   2.7 |  1.58
-Other   |            | 0.6475     |            |       |  0.54
+Pair    | 101.62     | 104.9      | 117.4      |  54.9 | 80.33
+Neigh   | 7.0764     | 7.1457     | 7.3197     |   3.1 |  5.47
+Comm    | 3.4662     | 15.891     | 19.229     | 140.3 | 12.17
+Output  | 0.17378    | 0.17455    | 0.17782    |   0.4 |  0.13
+Modify  | 1.8423     | 1.8695     | 1.9045     |   1.8 |  1.43
+Other   |            | 0.613      |            |       |  0.47
 
 Nlocal:        768.000 ave         776 max         758 min
 Histogram: 1 1 0 0 0 0 1 2 0 1

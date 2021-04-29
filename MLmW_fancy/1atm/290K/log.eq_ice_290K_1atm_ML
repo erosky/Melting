@@ -18,14 +18,14 @@ Created orthogonal box = (0.0000000 0.0000000 0.0000000) to (57.270510 50.907120
   3 by 1 by 2 MPI processor grid
 create_atoms        1 box
 Created 4608 atoms
-  create_atoms CPU = 0.000 seconds
+  create_atoms CPU = 0.001 seconds
 mass                1 18.015
 
 # Define potential
 #
 pair_style          sw
-pair_coeff          * * ../ML_mW.sw mW
-Reading sw potential file ../ML_mW.sw with DATE: 2019-02-27
+pair_coeff          * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
 
 # Add velocity/set timestep
 #
@@ -1074,20 +1074,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
    99800    284.89064   -30.892371    148536.14   -47639.888    3912.2869   -51552.175   0.14477995 
    99900    284.89757   -12.438813    148517.88    -47693.05    3912.3821   -51605.433   0.14605185 
   100000    289.67487    33.653528    148546.35   -47605.612    3977.9868   -51583.598   0.14262198 
-Loop time of 52.6612 on 6 procs for 100000 steps with 4608 atoms
+Loop time of 52.23 on 6 procs for 100000 steps with 4608 atoms
 
-Performance: 820.338 ns/day, 0.029 hours/ns, 1898.931 timesteps/s
-98.1% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 827.111 ns/day, 0.029 hours/ns, 1914.609 timesteps/s
+97.7% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 38.524     | 39.071     | 39.669     |   6.4 | 74.19
-Neigh   | 6.2203     | 6.2999     | 6.4184     |   3.4 | 11.96
-Comm    | 4.1222     | 4.6489     | 5.0471     |  15.9 |  8.83
-Output  | 0.17172    | 0.17266    | 0.17673    |   0.4 |  0.33
-Modify  | 1.8284     | 1.8854     | 1.9438     |   2.7 |  3.58
-Other   |            | 0.5836     |            |       |  1.11
+Pair    | 38.402     | 38.677     | 38.87      |   2.4 | 74.05
+Neigh   | 6.2053     | 6.2803     | 6.4343     |   4.1 | 12.02
+Comm    | 4.2421     | 4.5595     | 4.679      |   6.9 |  8.73
+Output  | 0.16678    | 0.16767    | 0.17123    |   0.4 |  0.32
+Modify  | 1.8195     | 1.871      | 1.9116     |   2.3 |  3.58
+Other   |            | 0.6741     |            |       |  1.29
 
 Nlocal:        768.000 ave         776 max         761 min
 Histogram: 2 1 0 0 0 0 1 0 0 2

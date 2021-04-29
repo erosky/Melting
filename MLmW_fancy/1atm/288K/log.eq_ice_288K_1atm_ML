@@ -24,8 +24,8 @@ mass                1 18.015
 # Define potential
 #
 pair_style          sw
-pair_coeff          * * ../ML_mW.sw mW
-Reading sw potential file ../ML_mW.sw with DATE: 2019-02-27
+pair_coeff          * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
 
 # Add velocity/set timestep
 #
@@ -1074,20 +1074,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
    99800    284.22802   -35.629535    148538.82   -47702.836    3903.1874   -51606.024   0.14460581 
    99900    281.22554   -17.042077    148499.94   -47749.491    3861.9555   -51611.447   0.15225657 
   100000    285.41489    1.6283971    148525.08   -47666.981    3919.4862   -51586.467    0.1430494 
-Loop time of 59.3165 on 6 procs for 100000 steps with 4608 atoms
+Loop time of 52.0391 on 6 procs for 100000 steps with 4608 atoms
 
-Performance: 728.297 ns/day, 0.033 hours/ns, 1685.873 timesteps/s
-98.1% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 830.145 ns/day, 0.029 hours/ns, 1921.632 timesteps/s
+97.9% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 39.416     | 39.962     | 40.439     |   6.6 | 67.37
-Neigh   | 6.2549     | 6.3448     | 6.5019     |   4.1 | 10.70
-Comm    | 9.3294     | 9.9679     | 10.584     |  14.3 | 16.80
-Output  | 0.18179    | 0.18292    | 0.18796    |   0.5 |  0.31
-Modify  | 2.0815     | 2.1278     | 2.1885     |   2.6 |  3.59
-Other   |            | 0.7313     |            |       |  1.23
+Pair    | 38.303     | 38.666     | 39.036     |   3.8 | 74.30
+Neigh   | 6.1652     | 6.238      | 6.3799     |   3.8 | 11.99
+Comm    | 4.2584     | 4.5167     | 4.6949     |   6.9 |  8.68
+Output  | 0.16781    | 0.16863    | 0.17204    |   0.4 |  0.32
+Modify  | 1.8193     | 1.8745     | 1.9288     |   2.5 |  3.60
+Other   |            | 0.5752     |            |       |  1.11
 
 Nlocal:        768.000 ave         791 max         751 min
 Histogram: 1 1 1 0 1 0 0 1 0 1

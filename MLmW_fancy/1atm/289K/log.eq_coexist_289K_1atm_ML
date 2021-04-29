@@ -10,7 +10,7 @@ Reading data file ...
   4608 atoms
   reading velocities ...
   4608 velocities
-  read_data CPU = 0.037 seconds
+  read_data CPU = 0.016 seconds
 read_data data.liq_${TEMP}K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 read_data data.liq_289K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 read_data data.liq_289K_1atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
@@ -24,7 +24,7 @@ Reading data file ...
   4608 atoms
   reading velocities ...
   4608 velocities
-  read_data CPU = 0.032 seconds
+  read_data CPU = 0.010 seconds
 
 write_data data.icewater_test
 System init for write_data ...
@@ -2111,20 +2111,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
    99900    288.94621   -11.320655    274563.09   -77122.054    7338.2229   -84460.277    4731.9239 
    99950    281.81178     5.020899    273954.71   -77101.782    7157.0334   -84258.815    4726.9139 
   100000    289.46302    75.866845    273414.64   -77062.436    7351.3481   -84413.784    4726.1627 
-Loop time of 252.083 on 6 procs for 100000 steps with 8521 atoms
+Loop time of 250.655 on 6 procs for 100000 steps with 8521 atoms
 
-Performance: 342.744 ns/day, 0.070 hours/ns, 396.695 timesteps/s
+Performance: 344.696 ns/day, 0.070 hours/ns, 398.954 timesteps/s
 99.5% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 71.789     | 129.95     | 199.39     | 459.4 | 51.55
-Neigh   | 30.745     | 35.863     | 39.477     |  61.6 | 14.23
-Comm    | 7.1004     | 80.11      | 143.34     | 622.8 | 31.78
-Output  | 0.13543    | 0.13759    | 0.14514    |   0.9 |  0.05
-Modify  | 4.9917     | 5.035      | 5.108      |   1.6 |  2.00
-Other   |            | 0.9893     |            |       |  0.39
+Pair    | 71.632     | 129.41     | 198.11     | 455.1 | 51.63
+Neigh   | 30.692     | 35.844     | 39.541     |  62.1 | 14.30
+Comm    | 6.8358     | 79.234     | 142.12     | 619.9 | 31.61
+Output  | 0.13326    | 0.13557    | 0.1436     |   1.0 |  0.05
+Modify  | 4.9907     | 5.0407     | 5.0995     |   1.6 |  2.01
+Other   |            | 0.9863     |            |       |  0.39
 
 Nlocal:        1420.17 ave        1453 max        1392 min
 Histogram: 2 0 0 0 2 0 0 0 1 1
@@ -2146,4 +2146,4 @@ write_data data.${NAME}
 write_data data.coexist_289K_1atm_ML
 System init for write_data ...
 
-Total wall time: 0:04:12
+Total wall time: 0:04:10

@@ -1040,20 +1040,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
   199600     290.6099    141.37451    148390.84   -47604.322    3990.8271   -51595.149   0.13844277 
   199800    290.22705   -99.850852    148741.14    -47583.38    3985.5696   -51568.949   0.14249218 
   200000    289.29499   -106.06902    148704.42   -47602.626      3972.77   -51575.396   0.14632504 
-Loop time of 110.143 on 6 procs for 200000 steps with 4608 atoms
+Loop time of 108.828 on 6 procs for 200000 steps with 4608 atoms
 
-Performance: 784.431 ns/day, 0.031 hours/ns, 1815.813 timesteps/s
+Performance: 793.910 ns/day, 0.030 hours/ns, 1837.755 timesteps/s
 98.0% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 76.993     | 78.091     | 79.186     |   9.0 | 70.90
-Neigh   | 12.475     | 12.657     | 12.905     |   4.9 | 11.49
-Comm    | 8.4118     | 9.3576     | 10.179     |  21.7 |  8.50
-Output  | 3.0579     | 3.0592     | 3.0646     |   0.1 |  2.78
-Modify  | 5.6519     | 5.7573     | 5.8743     |   3.1 |  5.23
-Other   |            | 1.221      |            |       |  1.11
+Pair    | 76.77      | 77.305     | 77.844     |   3.6 | 71.03
+Neigh   | 12.459     | 12.619     | 12.912     |   5.7 | 11.60
+Comm    | 8.131      | 8.928      | 9.1368     |  12.0 |  8.20
+Output  | 3.0315     | 3.0326     | 3.0361     |   0.1 |  2.79
+Modify  | 5.6101     | 5.7191     | 5.7872     |   2.7 |  5.26
+Other   |            | 1.224      |            |       |  1.12
 
 Nlocal:        768.000 ave         781 max         762 min
 Histogram: 2 0 2 1 0 0 0 0 0 1
@@ -1071,4 +1071,4 @@ Dangerous builds = 0
 write_data		data.${NAME}
 write_data		data.ice_290K_1atm_ML
 System init for write_data ...
-Total wall time: 0:02:42
+Total wall time: 0:02:41

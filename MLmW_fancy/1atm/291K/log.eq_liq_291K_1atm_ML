@@ -23,8 +23,8 @@ mass                1 18.015
 # Define potential
 #
 pair_style          sw
-pair_coeff          * * ../ML_mW.sw mW
-Reading sw potential file ../ML_mW.sw with DATE: 2019-02-27
+pair_coeff          * * /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw mW
+Reading sw potential file /data/emrosky-sim/Freezing_Simulations/Melting/MLmW_fancy/ML_mW.sw with DATE: 2019-02-27
 
 # Run minimization
 #
@@ -46,7 +46,7 @@ Per MPI rank memory allocation (min/avg/max) = 4.234 | 4.248 | 4.253 Mbytes
 Step Temp E_pair E_mol TotEng Press 
        0            0      7264096            0      7264096      4989818 
      648            0   -49879.088            0   -49879.088   -487.31673 
-Loop time of 1.34477 on 6 procs for 648 steps with 4608 atoms
+Loop time of 1.2229 on 6 procs for 648 steps with 4608 atoms
 
 99.0% CPU use with 6 MPI tasks x no OpenMP threads
 
@@ -62,12 +62,12 @@ Minimization stats:
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 1.0119     | 1.1091     | 1.19       |   5.8 | 82.47
-Neigh   | 0.025825   | 0.027271   | 0.029174   |   0.8 |  2.03
-Comm    | 0.1021     | 0.18472    | 0.28286    |  14.5 | 13.74
+Pair    | 0.9947     | 1.0703     | 1.1241     |   5.0 | 87.52
+Neigh   | 0.025371   | 0.025897   | 0.026428   |   0.2 |  2.12
+Comm    | 0.052457   | 0.10612    | 0.18163    |  15.9 |  8.68
 Output  | 0          | 0          | 0          |   0.0 |  0.00
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.02371    |            |       |  1.76
+Other   |            | 0.02062    |            |       |  1.69
 
 Nlocal:        768.000 ave         783 max         757 min
 Histogram: 2 0 1 0 0 0 2 0 0 1
@@ -1119,20 +1119,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4] Density
   100500    286.46614    37.873919    137941.55   -41168.946    3933.9226   -45102.869    1226.4491   0.99931103 
   100600    292.60204    75.132217    138222.03   -41147.688    4018.1844   -45165.872    1229.1625   0.99728324 
   100648    287.29219   -333.22939    138100.15   -41120.578    3945.2664   -45065.844    1228.6738   0.99816343 
-Loop time of 133.876 on 6 procs for 100000 steps with 4608 atoms
+Loop time of 120.753 on 6 procs for 100000 steps with 4608 atoms
 
-Performance: 322.687 ns/day, 0.074 hours/ns, 746.961 timesteps/s
-99.0% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 357.756 ns/day, 0.067 hours/ns, 828.140 timesteps/s
+98.9% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 105.19     | 106.08     | 107.48     |   7.9 | 79.23
-Neigh   | 7.2658     | 7.4424     | 7.9413     |   8.3 |  5.56
-Comm    | 15.332     | 17.197     | 18.185     |  23.6 | 12.85
-Output  | 0.19239    | 0.19381    | 0.20056    |   0.7 |  0.14
-Modify  | 2.1063     | 2.1799     | 2.2589     |   3.1 |  1.63
-Other   |            | 0.7866     |            |       |  0.59
+Pair    | 102        | 102.97     | 104.14     |   8.1 | 85.27
+Neigh   | 7.1304     | 7.1707     | 7.2213     |   1.1 |  5.94
+Comm    | 6.712      | 7.8891     | 8.7766     |  29.1 |  6.53
+Output  | 0.17234    | 0.17311    | 0.17642    |   0.4 |  0.14
+Modify  | 1.8369     | 1.9134     | 1.9988     |   3.7 |  1.58
+Other   |            | 0.6377     |            |       |  0.53
 
 Nlocal:        768.000 ave         777 max         759 min
 Histogram: 2 0 0 0 0 1 0 2 0 1

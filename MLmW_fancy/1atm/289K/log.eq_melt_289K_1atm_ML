@@ -11,7 +11,7 @@ Reading data file ...
   8521 atoms
   reading velocities ...
   8521 velocities
-  read_data CPU = 0.060 seconds
+  read_data CPU = 0.036 seconds
 
 # Define potential
 #
@@ -74,20 +74,20 @@ Per MPI rank memory allocation (min/avg/max) = 4.599 | 4.600 | 4.602 Mbytes
 Step Temp Press Volume TotEng KinEng PotEng c_1[4] 
        0          289    73.900836    273414.64   -77074.196     7339.589   -84413.784            0 
      500     330.4529    243.05901    268290.93   -78585.513    8392.3476    -86977.86    15.291423 
-Loop time of 1.21097 on 6 procs for 500 steps with 8521 atoms
+Loop time of 1.30498 on 6 procs for 500 steps with 8521 atoms
 
-Performance: 356.739 ns/day, 0.067 hours/ns, 412.892 timesteps/s
-99.7% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 331.040 ns/day, 0.072 hours/ns, 383.148 timesteps/s
+99.2% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.38538    | 0.65577    | 0.98131    |  29.4 | 54.15
-Neigh   | 0.112      | 0.14219    | 0.16131    |   5.6 | 11.74
-Comm    | 0.031624   | 0.37628    | 0.67685    |  41.9 | 31.07
-Output  | 0.00763    | 0.0081592  | 0.0086733  |   0.4 |  0.67
-Modify  | 0.023279   | 0.023712   | 0.024316   |   0.2 |  1.96
-Other   |            | 0.004865   |            |       |  0.40
+Pair    | 0.38458    | 0.69749    | 1.0503     |  31.8 | 53.45
+Neigh   | 0.11064    | 0.1496     | 0.17327    |   6.3 | 11.46
+Comm    | 0.039265   | 0.41571    | 0.76764    |  44.7 | 31.86
+Output  | 0.0091172  | 0.0096534  | 0.010175   |   0.4 |  0.74
+Modify  | 0.02435    | 0.026358   | 0.027991   |   0.8 |  2.02
+Other   |            | 0.006163   |            |       |  0.47
 
 Nlocal:        1420.17 ave        1461 max        1385 min
 Histogram: 2 0 0 1 0 1 0 0 1 1

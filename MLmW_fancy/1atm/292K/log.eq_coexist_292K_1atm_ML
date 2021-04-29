@@ -10,7 +10,7 @@ Reading data file ...
   4608 atoms
   reading velocities ...
   4608 velocities
-  read_data CPU = 0.030 seconds
+  read_data CPU = 0.011 seconds
 read_data data.liq_${TEMP}K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 read_data data.liq_292K_${PRES}atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
 read_data data.liq_292K_1atm_ML add append shift ${X_HI} ${YZ_LO} ${YZ_LO} group water
@@ -24,7 +24,7 @@ Reading data file ...
   4608 atoms
   reading velocities ...
   4608 velocities
-  read_data CPU = 0.029 seconds
+  read_data CPU = 0.008 seconds
 
 write_data data.icewater_test
 System init for write_data ...
@@ -2111,20 +2111,20 @@ Step Temp Press Volume TotEng KinEng PotEng c_1[4]
    99900    289.20188    166.57453    274132.47   -76759.539    7341.2677   -84100.806     5221.669 
    99950    291.40574   -230.03275    274243.46   -76740.759    7397.2117   -84137.971     5226.248 
   100000    291.25157   -216.83733    274507.96   -76712.295    7393.2982   -84105.593    5229.2487 
-Loop time of 250.223 on 6 procs for 100000 steps with 8517 atoms
+Loop time of 250.937 on 6 procs for 100000 steps with 8517 atoms
 
-Performance: 345.292 ns/day, 0.070 hours/ns, 399.644 timesteps/s
-99.4% CPU use with 6 MPI tasks x no OpenMP threads
+Performance: 344.309 ns/day, 0.070 hours/ns, 398.506 timesteps/s
+99.5% CPU use with 6 MPI tasks x no OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 73.026     | 129.25     | 197.91     | 447.5 | 51.65
-Neigh   | 31.02      | 36.254     | 39.933     |  61.4 | 14.49
-Comm    | 6.1631     | 78.524     | 139.99     | 612.1 | 31.38
-Output  | 0.13254    | 0.13472    | 0.14185    |   0.9 |  0.05
-Modify  | 5.0013     | 5.0401     | 5.0863     |   1.1 |  2.01
-Other   |            | 1.02       |            |       |  0.41
+Pair    | 72.3       | 129.97     | 198.6      | 449.0 | 51.79
+Neigh   | 31.081     | 36.251     | 39.74      |  61.2 | 14.45
+Comm    | 6.4558     | 78.551     | 141.29     | 615.1 | 31.30
+Output  | 0.13309    | 0.13526    | 0.14286    |   0.9 |  0.05
+Modify  | 4.9984     | 5.0431     | 5.087      |   1.3 |  2.01
+Other   |            | 0.9847     |            |       |  0.39
 
 Nlocal:        1419.50 ave        1437 max        1391 min
 Histogram: 1 1 0 0 0 0 0 0 2 2
